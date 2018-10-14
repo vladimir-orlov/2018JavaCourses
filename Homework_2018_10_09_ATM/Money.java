@@ -4,7 +4,13 @@ public class Money {
     private int den20; // кол-во купюр номиналом 20
     private int den50; // кол-во купюр номиналом 50
     private int den100; // кол-во купюр номиналом 100
-    private int sum; // общая доступная сумма денег
+
+
+    public Money(int den20, int den50, int den100) {
+        this.den20 = den20;
+        this.den50 = den50;
+        this.den100 = den100;
+    }
 
     public int getDen20() {
         return den20;
@@ -30,27 +36,15 @@ public class Money {
         this.den100 = den100;
     }
 
-    public int getSum() {
-        return sum;
+
+    public void AddMoney(int add20, int add50, int add100) {  // добавляем купюры в банкомат
+        den20 += add20;
+        den50 += add50;
+        den100 += add100;
     }
 
-    public void setSum(int sum) {
-        this.sum = sum;
-    }
-
-    public void MoneyStart (int x20, int x50, int x100){  // задаём начальное кол-во купюр в банкомате
-        setDen20(x20);
-        setDen50(x50);
-        setDen100(x100);
-    }
-
-    public void AddMoney (int add20, int add50, int add100){  // добавляем купюры в банкомат
-        setDen20(getDen20()+add20);
-        setDen50(getDen50()+add50);
-        setDen100(getDen100()+add100);
-        setSum(getDen20()*20+getDen50()*50+getDen100()*100);
-        System.out.println("Купюр номиналом 20: "+getDen20()+". Купюр номиналом 50: "+getDen50()+". Купюр номиналом 100: "+getDen100());
-        System.out.println("Доступная сумма: " + getSum());
+    public int sum(){
+        return 20*den20+50*den50+100*den100;
     }
 
 }

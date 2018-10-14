@@ -1,4 +1,5 @@
 package Homework_2018_10_09_ATM;
+
 /*
 Задача №23.
 Создать класс и объекты описывающие Банкомат.
@@ -9,11 +10,17 @@ package Homework_2018_10_09_ATM;
 Создать конструктор с тремя параметрами – количеством купюр.
  */
 public class Process {
-    public static void main (String[] args){
-        Money m = new Money();
+    public static void main(String[] args) {
+        Money money = new Money(5, 10, 15);
+        addMoney(money);
+
         Request r = new Request();
-        m.MoneyStart(5,10,15);
-        m.AddMoney(5,5,5);
-        System.out.println("Операция удалась? "+r.AskMoney(2950));
+        System.out.println("Операция удалась? " + r.AskMoney(money, 2950));
+    }
+
+    private static void addMoney(Money money) {
+        money.AddMoney(5, 5, 5);
+        System.out.println("Купюр номиналом 20: " + money.getDen20() + ". Купюр номиналом 50: " + money.getDen50() + ". Купюр номиналом 100: " + money.getDen100());
+        System.out.println("Доступная сумма: " + money.sum());
     }
 }
